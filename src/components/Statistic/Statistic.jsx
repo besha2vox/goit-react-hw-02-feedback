@@ -17,21 +17,16 @@ class Statistic extends Component {
       total
     );
 
-    return (
-      <div>
-        <h2>Statistic</h2>
-        {total ? (
-          <>
-            {statsEntries.map(([key, value]) => (
-              <Value key={key} text={key} count={value} />
-            ))}
-            <p>Total: {total}</p>
-            <p>Positive feedback: {positiveFeedbackPercentage}%</p>
-          </>
-        ) : (
-          <Notification message="There is no feedback" />
-        )}
-      </div>
+    return total ? (
+      <>
+        {statsEntries.map(([key, value]) => (
+          <Value key={key} text={key} count={value} />
+        ))}
+        <p>Total: {total}</p>
+        <p>Positive feedback: {positiveFeedbackPercentage}%</p>
+      </>
+    ) : (
+      <Notification message="There is no feedback" />
     );
   }
 }

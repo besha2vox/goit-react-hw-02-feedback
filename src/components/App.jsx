@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import Section from './Section';
 import Button from './Button';
 import Statistic from './Statistic/Statistic';
+import Container from './Container';
 
 class App extends Component {
   state = {
@@ -18,15 +20,16 @@ class App extends Component {
     const stateKeys = Object.keys(this.state);
 
     return (
-      <div>
-        <div>
-          <h2>Please leave feedback</h2>
+      <Container>
+        <Section title="Please leave feedback">
           {stateKeys.map(key => (
             <Button key={key} text={key} onClick={this.hendlerClick} />
           ))}
-        </div>
-        <Statistic stats={this.state} />
-      </div>
+        </Section>
+        <Section title="Statistic">
+          <Statistic stats={this.state} />
+        </Section>
+      </Container>
     );
   }
 }
