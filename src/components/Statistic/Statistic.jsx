@@ -5,7 +5,8 @@ import Notification from './Notification';
 class Statistic extends Component {
   getTotal = values => values.reduce((acc, value) => acc + value, 0);
 
-  getPositiveFeedbackPercentage = (value, total) => (value * 100) / total;
+  getPositiveFeedbackPercentage = (value, total) =>
+    Math.round((value * 100) / total);
 
   render() {
     const { stats } = this.props;
