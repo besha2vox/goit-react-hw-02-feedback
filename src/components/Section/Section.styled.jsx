@@ -5,7 +5,7 @@ const SectionContainer = styled.section`
 `;
 
 const Title = styled.h2`
-  font-size: 28px;
+  font-size: 36px;
   font-size: 900;
 `;
 

@@ -1,6 +1,11 @@
 import styled from '@emotion/styled';
 
-const Btn = styled.button`
+const ButtonList = styled.ul`
+  display: flex;
+  justify-content: center;
+`;
+
+const Button = styled.button`
   padding: calc(0.5em + 8px) calc(0.9em + 8px);
   color: #373b44;
   background: conic-gradient(from 90deg at 3px 3px, #0000 90deg, #373b44 0) 8px
@@ -9,10 +14,10 @@ const Btn = styled.button`
   outline: 3px solid #0000;
   font-size: 28px;
   font-family: inherit;
+  text-shadow: inherit;
 
-  border: 0;
-
-  touch-action: manipulation;
+  border: none;
+  cursor: pointer;
 
   &:hover,
   &:focus-visible {
@@ -27,4 +32,4 @@ const Btn = styled.button`
   }
 `;
 
-export { Btn };
+export { Button, ButtonList };

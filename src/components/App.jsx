@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import Section from './Section';
-import Button from './Button';
+import FeedbackOptions from './FeedbackOptions';
 import Statistic from './Statistic/Statistic';
 import Container from './Container';
+import Notification from './Notification';
 
 class App extends Component {
   state = {
@@ -17,17 +18,32 @@ class App extends Component {
   };
 
   render() {
+    const { good, neutral, bad } = this.state;
     const stateKeys = Object.keys(this.state);
+    const statsValues = Object.values(this.state);
+    const total = statsValues.reduce((acc, value) => acc + value, 0);
+    const positivePercentage = Math.floor((good * 100) / total);
 
     return (
       <Container>
         <Section title="Please leave feedback">
-          {stateKeys.map(key => (
-            <Button key={key} text={key} onClick={this.hendlerClick} />
-          ))}
+          <FeedbackOptions
+            options={stateKeys}
+            onLeaveFeedback={this.hendlerClick}
+          />
         </Section>
         <Section title="Statistic">
-          <Statistic stats={this.state} />
+          {total ? (
+            <Statistic
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={total}
+              positivePercentage={positivePercentage}
+            />
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Section>
       </Container>
     );

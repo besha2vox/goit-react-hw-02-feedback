@@ -1,35 +1,34 @@
-import React, { Component } from 'react';
-import Value from './Value';
-import Notification from './Notification';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-class Statistic extends Component {
-  getTotal = values => values.reduce((acc, value) => acc + value, 0);
-
-  getPositiveFeedbackPercentage = (value, total) =>
-    Math.round((value * 100) / total);
-
-  render() {
-    const { stats } = this.props;
-    const statsEntries = Object.entries(stats);
-    const statsValues = Object.values(stats);
-    const total = this.getTotal(statsValues);
-    const positiveFeedbackPercentage = this.getPositiveFeedbackPercentage(
-      stats.good,
-      total
-    );
-
-    return total ? (
-      <>
-        {statsEntries.map(([key, value]) => (
-          <Value key={key} text={key} count={value} />
-        ))}
+const Statistic = ({ good, neutral, bad, total, positivePercentage }) => {
+  return (
+    <ul>
+      <li>
+        <p>Good: {good}</p>
+      </li>
+      <li>
+        <p>Neutral: {neutral}</p>
+      </li>
+      <li>
+        <p>Bad: {bad}</p>
+      </li>
+      <li>
         <p>Total: {total}</p>
-        <p>Positive feedback: {positiveFeedbackPercentage}%</p>
-      </>
-    ) : (
-      <Notification message="There is no feedback" />
-    );
-  }
-}
+      </li>
+      <li>
+        <p>Positive feedback: {positivePercentage}%</p>
+      </li>
+    </ul>
+  );
+};
+
+Statistic.propTypes = {
+  good: PropTypes.number.isRequired,
+  neutral: PropTypes.number.isRequired,
+  bad: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired,
+  positivePercentage: PropTypes.number.isRequired,
+};
 
 export default Statistic;
