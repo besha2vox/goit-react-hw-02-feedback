@@ -3,18 +3,15 @@ import PropTypes from 'prop-types';
 import { capitalizeFirstLetter } from 'functions/capitalizeFirstLetter';
 
 const Statistic = props => {
-  const propsEntries = Object.entries(props).map(([key, value]) => [
-    capitalizeFirstLetter(key),
-    value,
-  ]);
+  const propsEntries = Object.entries(props);
 
   return (
     <ul>
-      {propsEntries.map(([key, value], indx) => {
+      {propsEntries.map(([key, value]) => {
         return (
-          <li key={indx}>
+          <li key={key}>
             <p>
-              {key}: {value}
+              {capitalizeFirstLetter(key)}: {value}
             </p>
           </li>
         );
