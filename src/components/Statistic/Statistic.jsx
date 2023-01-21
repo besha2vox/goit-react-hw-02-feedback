@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Statistic = ({ good, neutral, bad, total, positivePercentage }) => {
+const Statistic = props => {
+  const propsEntries = Object.entries(props).map(([key, value]) => [
+    key.charAt(0).toUpperCase() + key.slice(1),
+    value,
+  ]);
+
   return (
     <ul>
-      <li>
-        <p>Good: {good}</p>
-      </li>
-      <li>
-        <p>Neutral: {neutral}</p>
-      </li>
-      <li>
-        <p>Bad: {bad}</p>
-      </li>
-      <li>
-        <p>Total: {total}</p>
-      </li>
-      <li>
-        <p>Positive feedback: {positivePercentage}%</p>
-      </li>
+      {propsEntries.map(([key, value], indx) => {
+        return (
+          <li key={indx}>
+            <p>
+              {key}: {value}
+            </p>
+          </li>
+        );
+      })}
     </ul>
   );
 };
