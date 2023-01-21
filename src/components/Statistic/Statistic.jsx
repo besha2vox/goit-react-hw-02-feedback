@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { capitalizeFirstLetter } from 'functions/capitalizeFirstLetter';
 
 const Statistic = props => {
   const propsEntries = Object.entries(props).map(([key, value]) => [
-    key.charAt(0).toUpperCase() + key.slice(1),
+    capitalizeFirstLetter(key),
     value,
   ]);
 
