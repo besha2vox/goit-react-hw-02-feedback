@@ -17,12 +17,19 @@ class App extends Component {
     this.setState(prevState => ({ [key]: prevState[key] + 1 }));
   };
 
+  countTotalFeedback = statsValues =>
+    statsValues.reduce((acc, value) => acc + value, 0);
+
+  countPositiveFeedbackPercentage = total =>
+    Math.floor((this.state.good * 100) / total);
+
   render() {
     const { good, neutral, bad } = this.state;
     const stateKeys = Object.keys(this.state);
     const statsValues = Object.values(this.state);
-    const total = statsValues.reduce((acc, value) => acc + value, 0);
-    const positivePercentage = Math.floor((good * 100) / total);
+    const total = this.countTotalFeedback(statsValues);
+    const positivePercentage =
+      this.countPositiveFeedbackPercentage(total) + '%';
 
     return (
       <Container>
