@@ -1,4 +1,3 @@
-import React from 'react';
 import { SectionContainer, Title } from './Section.styled';
 import PropTypes from 'prop-types';
 

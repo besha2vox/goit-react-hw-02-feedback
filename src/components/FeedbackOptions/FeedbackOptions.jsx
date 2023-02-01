@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, ButtonList } from './FeedbackOptions.styled';
 import PropTypes from 'prop-types';
 import { capitalizeFirstLetter } from 'functions/capitalizeFirstLetter';

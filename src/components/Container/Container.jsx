@@ -1,4 +1,3 @@
-import React from 'react';
 import { ContentContainer } from './Container.styled';
 
 const Container = ({ children }) => {
